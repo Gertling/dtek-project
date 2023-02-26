@@ -9,7 +9,9 @@
 #include <pic32mx.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <pic32mx.h>
 #include "header.h"
+
 #define screen_width = 128;
 #define screen_heigth = 32;
 volatile int *trise_egen = (volatile int *)0xbf886100;
