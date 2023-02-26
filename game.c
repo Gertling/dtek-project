@@ -18,16 +18,16 @@ double player1Y;
 double player2Y;
 double playerHeight = 5;
 
-void initGame()
+void initGame() // Will most likely be used to reset game
 {
   isPlaying = false;
 
-  gameWidth = 40;
-  gameHeight = 20;
+  gameWidth = 40;  // Screen width
+  gameHeight = 20; // Screen height
 
   // Start in middle of screen
-  ballX = gameWidth / 2;
-  ballY = gameHeight / 2;
+  ballX = gameWidth / 2;    // Make ball start in middle
+  ballY = gameHeight / 2;   // Make ball start in middle
 }
 
 void containPlayer(double *playerPointer, double upperLimit)
@@ -42,7 +42,7 @@ void containPlayer(double *playerPointer, double upperLimit)
   }
 }
 
-void upatePlayerPos(double offset, int playerNumber)
+void updatePlayerPos(double offset, int playerNumber)
 {
   if (playerNumber == 1)
   {
@@ -67,5 +67,6 @@ void startGame()
 
 void tickGame()
 {
-  
+
+  updatePlayerPos(3, 1);
 }
