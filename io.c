@@ -12,7 +12,7 @@ int getPlayerBtns(int btnNumber)
     switch (btnNumber)
     {
     case 1:
-        if ((*PORTBegen & 0x04) == 0) // Button 1
+        if ((PORTB & 0x04) == 0) // Button 1
         {
             return 1;
         }
@@ -21,7 +21,7 @@ int getPlayerBtns(int btnNumber)
         break;
 
     case 2:
-        if ((*PORTBegen & 0x010) == 0)
+        if ((PORTB & 0x010) == 0)
         {
             return 1;
         }
@@ -31,7 +31,7 @@ int getPlayerBtns(int btnNumber)
 
     case 3:
 
-        if ((*PORTBegen & 0x0100) == 0)
+        if ((PORTB & 0x0100) == 0)
         {
             return 1;
         }
@@ -40,7 +40,7 @@ int getPlayerBtns(int btnNumber)
 
     case 4:
 
-        if ((*PORTBegen & 0x0400) == 0)
+        if ((PORTB & 0x0400) == 0)
         {
             return 1;
         }
