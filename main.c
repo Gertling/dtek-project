@@ -9,7 +9,9 @@
 // #include <pic32mx.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <pic32mx.h>
 #include "header.h"
+
 volatile int *trise_egen = (volatile int *)0xbf886100;
 volatile int *porte_egen = (volatile int *)0xbf886110;
 
