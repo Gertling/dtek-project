@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "header.h"
 #include <math.h>
 
@@ -11,8 +12,8 @@ double gameHeight;
 double ballX;
 double ballY;
 
-double ballSpeedY = 1;
-double ballSpeedX = 1;
+double ballSpeedY = 0.2;
+double ballSpeedX = 0.2;
 
 double player1Y;
 double player2Y;
@@ -21,6 +22,8 @@ double playerHeight = 5;
 
 void initGame() // Will most likely be used to reset game
 {
+  playerHeight = 8;
+  player1Y = 15;
   isPlaying = false;
 
   gameWidth = 128; // Screen width
@@ -68,8 +71,8 @@ void startGame()
 
 void tickGame()
 {
-
-  updatePlayerPos(3, 1);
+  ballBounce();
+  updateBallPos();
 }
 
 int myRound(double number)
@@ -82,6 +85,41 @@ int myRound(double number)
   else
   {
     return rounded;
+  }
+}
+void updateBallPos()
+{
+  ballX += ballSpeedX;
+  ballY += ballSpeedY;
+}
+
+int getBallPositionY()
+{
+  return myRound(ballY);
+}
+int getBallPositionX()
+{
+  return myRound(ballX);
+}
+
+int ballBounce()
+{
+  if (ballY + 1 > gameHeight - 1)
+  {
+    ballSpeedY = -1 * fabs(ballSpeedY);
+  }
+  if (ballY < 0)
+  {
+    ballSpeedY = fabs(ballSpeedY);
+  }
+
+  if (ballX < 0)
+  {
+    ballSpeedX = 1 * fabs(ballSpeedX);
+  }
+  if (ballX + 1 > gameWidth - 1)
+  {
+    ballSpeedX = -1 * fabs(ballSpeedX);
   }
 }
 

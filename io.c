@@ -12,7 +12,7 @@ int getPlayerBtns(int btnNumber)
     switch (btnNumber)
     {
     case 1:
-        if ((PORTB & 0x04) == 0) // Button 1
+        if ((PORTB & 0x04) == 0) // Button 1 on breadboard. Port a0
         {
             return 1;
         }
@@ -21,7 +21,7 @@ int getPlayerBtns(int btnNumber)
         break;
 
     case 2:
-        if ((PORTB & 0x010) == 0)
+        if ((PORTB & 0x010) == 0) // Button 2 on breadboard. Port a1
         {
             return 1;
         }
@@ -31,7 +31,7 @@ int getPlayerBtns(int btnNumber)
 
     case 3:
 
-        if ((PORTB & 0x0100) == 0)
+        if ((PORTB & 0x0100) == 0) // Button 3 on breadboard. Port a2
         {
             return 1;
         }
@@ -40,7 +40,7 @@ int getPlayerBtns(int btnNumber)
 
     case 4:
 
-        if ((PORTB & 0x0400) == 0)
+        if ((PORTB & 0x0400) == 0) // Button 4 on breadboard. Port a3
         {
             return 1;
         }
