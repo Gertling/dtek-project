@@ -20,27 +20,44 @@ volatile int *porte_egen = (volatile int *)0xbf886110;
 volatile int *TRISB_egen = (volatile int *)0xbf886040;
 volatile int *PORTBegen1 = (volatile int *)0xbf886050;
 
+int findPixelFromPos(int x, int y)
+{
+	return y * 128 + x;
+}
 int mytime = 1;
 int main(void)
 {
 	init();
-	
-	
-	*TRISB_egen = 0xffffffff; // Sätter allt som finns till input :) 
+
+	*TRISB_egen = 0xffffffff;				// Sätter allt som finns till input :)
 	*trise_egen = *trise_egen & 0xffffff00; // Egen TRISE, sätter till output
+	int i;
+    for (i = 0; i < 4000; i = i + 128)
+    {
+        icon[i] = 0x1;
+            display_image(0, icon);
+
+        int j;
+        for (j = 0; j < 16; j++)
+        {
+            icon[i] = j;
+            display_image(0, icon);
+
+        }
+	}
+	int r = findPixelFromPos(4,1);
+	icon[r] = 0x1;
 
 	display_image(0, icon);
 
+
 	while (1)
 	{
-
-	
 
 		PORTE = (PORTB & 0xff);
 
 		if (getPlayerBtns(1))
 		{
-			
 		}
 
 		//*porte_egen += 1;
@@ -59,19 +76,21 @@ int main(void)
 
 void init(void) // This is all stolen.
 {
-	SYSKEY = 0xAA996655;  /* Unlock OSCCON, step 1 */
-	SYSKEY = 0x556699AA;  /* Unlock OSCCON, step 2 */
-	while(OSCCON & (1 << 21)); /* Wait until PBDIV ready */
+	SYSKEY = 0xAA996655; /* Unlock OSCCON, step 1 */
+	SYSKEY = 0x556699AA; /* Unlock OSCCON, step 2 */
+	while (OSCCON & (1 << 21))
+		;				  /* Wait until PBDIV ready */
 	OSCCONCLR = 0x180000; /* clear PBDIV bit <0,1> */
-	while(OSCCON & (1 << 21));  /* Wait until PBDIV ready */
-	SYSKEY = 0x0;  /* Lock OSCCON */
-	
+	while (OSCCON & (1 << 21))
+		;		  /* Wait until PBDIV ready */
+	SYSKEY = 0x0; /* Lock OSCCON */
+
 	/* Set up output pins */
 	AD1PCFG = 0xFFFF;
 	ODCE = 0x0;
 	TRISECLR = 0xFF;
 	PORTE = 0x0;
-	
+
 	/* Output pins for display signals */
 	PORTF = 0xFFFF;
 	PORTG = (1 << 9);
@@ -79,18 +98,18 @@ void init(void) // This is all stolen.
 	ODCG = 0x0;
 	TRISFCLR = 0x70;
 	TRISGCLR = 0x200;
-	
+
 	/* Set up input pins */
 	TRISDSET = (1 << 8);
 	TRISFSET = (1 << 1);
-	
+
 	/* Set up SPI as master */
 	SPI2CON = 0;
 	SPI2BRG = 4;
 	/* SPI2STAT bit SPIROV = 0; */
 	SPI2STATCLR = 0x40;
 	/* SPI2CON bit CKP = 1; */
-    SPI2CONSET = 0x40;
+	SPI2CONSET = 0x40;
 	/* SPI2CON bit MSTEN = 1; */
 	SPI2CONSET = 0x20;
 	/* SPI2CON bit ON = 1; */

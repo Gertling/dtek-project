@@ -3,7 +3,6 @@
   "files.associations": {
     "stdint.h": "c",
     "stdbool.h": "c",
-    "pic32mx.h": "c",
     "math.h": "c"
   }
 }
