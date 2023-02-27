@@ -4,7 +4,7 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/",
-                "/Applications/mcb32tools.app/Contents/Resources/Toolchain/include/"
+                "/Applications/mcb32tools.app/Contents/Resources/Toolchain/include/**"
             ],
             "defines": [],
             "macFrameworkPath": [
