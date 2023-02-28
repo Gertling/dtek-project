@@ -14,27 +14,32 @@ void displayPlayer(int playerNumber, int posY)
     }
     else if (playerNumber == 2)
     {
-        x = 125;
+        x = 123;
     }
     else
     {
-        // Idiot
     }
     int i;
     for (i = 0; i < playerHeight; i++)
     {
         enablePixel(x, posY + i);
         enablePixel(x + 1, posY + i);
+        enablePixel(x + 2, posY + i);
     }
 }
 
-void displayBall(int posX, int posY)
+void displayBall(int posX, int posY) 
 {
-    enablePixel(posX, posY);
-    enablePixel(posX + 1, posY);
-
-    enablePixel(posX, posY + 1);
-    enablePixel(posX + 1, posY + 1);
+    int size = getBallSize();
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        int j;
+        for (j = 0; j < size; j++)
+        {
+            enablePixel(posX + i, posY + j);
+        }
+    }
 }
 
 void displayGame(void)

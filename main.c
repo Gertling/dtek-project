@@ -20,7 +20,7 @@ bool isTicked = false;
 int mytime = 1;
 
 int count = 0;
-int count2 = 0;
+
 int main(void)
 {
 	init();
@@ -74,15 +74,11 @@ int main(void)
 				updatePlayerPos(0.2, 2);
 			}
 
-			displayPlayer(1, getPlayerPosition(1));
-			displayPlayer(2, getPlayerPosition(2));
-
-			displayBall(getBallPositionX(), getBallPositionY());
-			PORTE = (getBallPositionY()); // Lyser fint
-
-			enablePixel(count, count2);
-			display_image(0, icon);
-			clearIcon();
+			if (count = 5) // So that we only display the game every 10 ticks.
+			{
+				count == 0;
+				display();
+			}
 			count++;
 		}
 
@@ -92,6 +88,20 @@ int main(void)
 	}
 
 	return 0;
+}
+
+void display()
+{
+
+	displayPlayer(1, getPlayerPosition(1));
+	
+	displayPlayer(2, getPlayerPosition(2));
+
+	displayBall(getBallPositionX(), getBallPositionY());
+	PORTE = (getBallPositionY()); // Lyser fint
+
+	display_image(0, icon);
+	clearIcon();
 }
 
 void init(void) // This is all stolen.

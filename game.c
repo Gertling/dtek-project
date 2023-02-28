@@ -4,25 +4,44 @@
 #include "header.h"
 #include <math.h>
 
+
+bool serveDelay = true;
 bool isPlaying = false;
 
 double gameWidth;
 double gameHeight;
 
+double ballSize = 4;
+
 double ballX;
 double ballY;
 
 double ballSpeedY = 0.2;
-double ballSpeedX = 0.2;
-
+double ballSpeedX = 0.25;
 double player1Y;
 double player2Y;
 
-double playerHeight = 5;
+double playerHeight;
+
+bool getServeDelay(){
+  return serveDelay;
+}
+
+void setServeDelay(bool b){
+  serveDelay = b;
+}
+
+
+int getBallSize()
+{
+  return ballSize;
+}
+
+
 
 void initGame() // Will most likely be used to reset game
 {
-  playerHeight = 8;
+  playerHeight = 12;
   player1Y = 15;
   isPlaying = false;
 
@@ -71,8 +90,12 @@ void startGame()
 
 void tickGame()
 {
-  ballBounce();
-  updateBallPos();
+  if (isPlaying)
+  {
+    paddleCollide();
+    ballBounce();
+    updateBallPos();
+  }
 }
 
 int myRound(double number)
@@ -104,7 +127,7 @@ int getBallPositionX()
 
 int ballBounce()
 {
-  if (ballY + 1 > gameHeight - 1)
+  if ((ballY + ballSize) > gameHeight - 1)
   {
     ballSpeedY = -1 * fabs(ballSpeedY);
   }
@@ -115,11 +138,13 @@ int ballBounce()
 
   if (ballX < 0)
   {
-    ballSpeedX = 1 * fabs(ballSpeedX);
+    onGoal(1);
+    // scorePlayerOne++;
   }
-  if (ballX + 1 > gameWidth - 1)
+  if ((ballX + ballSize) > gameWidth - 1)
   {
-    ballSpeedX = -1 * fabs(ballSpeedX);
+    onGoal(2);
+    // scorePlayerTwo++;
   }
 }
 
@@ -136,4 +161,62 @@ int getPlayerPosition(int playerNumber)
     int player2 = myRound(player2Y); // Player position as int.
     return player2;
   }
+}
+
+void onGoal(int playerNumber)
+{
+  serveDelay = true;
+  isPlaying = false;
+  ballX = gameWidth / 2;  // Make ball start in middle
+  ballY = gameHeight / 2; // Make ball start in middle
+
+  ballSpeedY = 0.2;
+  ballSpeedX = 0.25; // Give ball it's beginning direction and speed
+}
+
+void paddleCollide()
+{
+  if (player1Y <= (ballY + ballSize) && ballY <= (player1Y + 8) && ballX <= 4)
+  {
+    ballSpeedX = fabs(ballSpeedX);
+    collisionDeflection(player1Y);
+  }
+  else if (player2Y <= (ballY + ballSize) && ballY <= (player2Y + 8) && ((ballX + ballSize) >= 123))
+  {
+    ballSpeedX = -1 * fabs(ballSpeedX);
+    collisionDeflection(player2Y);
+  }
+}
+
+void collisionDeflection(double PY)
+{
+  double margin = 0.1;
+  // Check if ball bounced on top of the paddle
+  if ((ballY + ballSize - margin <= PY))
+  {
+    if (ballSpeedY > 0)
+    {
+      ballSpeedY -= 0.7;
+    }
+  }
+  else if (((ballY + margin) >= (PY + 8)))
+  {
+    if (ballSpeedY < 0)
+    {
+      ballSpeedY += 0.7;
+    }
+  }
+  else
+  {
+    collisionModifier(PY);
+  }
+}
+
+void collisionModifier(double PY)
+{
+  double magnitude = ((PY - (ballSize / 2.0) + ((playerHeight + ballSize) / 2.0) - (ballY + (ballSize / 2.0))) / ((playerHeight + ballSize) / 2.0));
+  double changeMax = 0.1;
+
+  double modifier = (magnitude * changeMax);
+  ballSpeedY += modifier;
 }

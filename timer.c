@@ -4,6 +4,7 @@
 #include <pic32mx.h>
 #include "header.h"
 
+// stolen from lab, written by us
 void timer2(void)
 {
     T2CON = 0x70; // Pre-scale
@@ -16,11 +17,11 @@ void timer2(void)
 
     enable_interrupt(); // enable_interrupt from labwork.S
 
-    PR2 = 3125;     // Sätter delayen korrekt (3125 * 256 = 800 000) Räknar med pre-scale
+    PR2 = 1250;      // 625;     // Sätter delayen korrekt (3125 * 256 = 800 000) Räknar med pre-scale
     T2CON |= 0x8000; // Starts the timer
 }
 
-
+int serveDelayCount = 0;
 
 void user_isr(void)
 {
@@ -31,7 +32,17 @@ void user_isr(void)
     {
         isTicked = true;
         IFSCLR(0) = 0x100; // Code to reset flag. The sooner the better. Source: Trust me bro.
-       
+
+        if (getServeDelay())
+        {
+            serveDelayCount++;
+            if (serveDelayCount >= 500)
+            {
+                setServeDelay(false);
+                startGame();
+                serveDelayCount = 0;
+            }
+        }
 
         // IFS(0) = IFS(0) & 0x00000800;
     }

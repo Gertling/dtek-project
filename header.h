@@ -47,6 +47,7 @@ void clearIcon();
 bool isTicked;
 double playerHeight;
 
+
 void displayPlayer(int playerNumber, int posY);
 
 void updatePlayerPos(double offset, int playerNumber);
@@ -54,7 +55,10 @@ void updatePlayerPos(double offset, int playerNumber);
 void displayBall(int posX, int posY);
 
 int getBallPositionX();
-
+int getBallSize();
 int getBallPositionY();
-
+bool getServeDelay();
+void setServeDelay(bool b);
+void startGame();
 void tickGame();
+
