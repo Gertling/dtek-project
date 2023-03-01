@@ -42,6 +42,3 @@ void displayBall(int posX, int posY)
     }
 }
 
-void displayGame(void)
-{
-}

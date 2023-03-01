@@ -1,0 +1,16 @@
+"filename", "language", "C", "C++", "Makefile", "comment", "blank", "total"
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/Makefile", "Makefile", 0, 0, 52, 13, 21, 86
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/ai.c", "C", 9, 0, 0, 0, 3, 12
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/decasc.c", "C", 51, 0, 0, 6, 10, 67
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/display.c", "C", 33, 0, 0, 0, 16, 49
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/displaygame.c", "C", 41, 0, 0, 0, 4, 45
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/game.c", "C", 217, 0, 0, 4, 38, 259
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/header.h", "C++", 0, 57, 0, 5, 21, 83
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/io.c", "C", 47, 0, 0, 1, 15, 63
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/main.c", "C", 81, 0, 0, 41, 21, 143
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/menumanager.c", "C", 172, 0, 0, 5, 20, 197
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/mipslabdata.c", "C", 194, 0, 0, 7, 6, 207
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/mipslabfunc.c", "C", 211, 0, 0, 98, 45, 354
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/stubs.c", "C", 7, 0, 0, 8, 6, 21
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/timer.c", "C", 35, 0, 0, 6, 10, 51
+"Total", "-", 1098, 57, 52, 194, 236, 1637

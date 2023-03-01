@@ -19,16 +19,16 @@ bool isTicked = false;
 
 int mytime = 1;
 
-int count = 0;
 
 int main(void)
 {
+
 	init();
 	initGame();
 	timer2();
 
 	enablePixel(1, 1);
-	display_image(0, icon);
+	// display_image(0, icon);
 
 	TRISB = 0xffffffff;			// Sätter allt som finns till input :)
 	TRISE = TRISE & 0xffffff00; // Egen TRISE, sätter till output
@@ -52,34 +52,32 @@ int main(void)
 
 	while (1)
 	{
+
 		if (isTicked)
 		{
-			tickGame();
+			btnTimeoutCounter++;
 			isTicked = false;
+			switch (displayState)
+			{
+			case 0:
+					mainMenu();
+				break;
+			case 1:
+					leaderBoard();
+				break;
+			case 2:
+					difficulty();
+				break;
+			case 3:
+					game();
+				break;
+			case 4:
+					gameMode();
+				break;
 
-			if (getPlayerBtns(1))
-			{
-				updatePlayerPos(-0.2, 1);
+			default:
+				break;
 			}
-			if (getPlayerBtns(2))
-			{
-				updatePlayerPos(0.2, 1);
-			}
-			if (getPlayerBtns(3))
-			{
-				updatePlayerPos(-0.2, 2);
-			}
-			if (getPlayerBtns(4))
-			{
-				updatePlayerPos(0.2, 2);
-			}
-
-			if (count = 5) // So that we only display the game every 10 ticks.
-			{
-				count == 0;
-				display();
-			}
-			count++;
 		}
 
 		//*porte_egen += 1;
@@ -90,22 +88,13 @@ int main(void)
 	return 0;
 }
 
-void display()
-{
-
-	displayPlayer(1, getPlayerPosition(1));
-	
-	displayPlayer(2, getPlayerPosition(2));
-
-	displayBall(getBallPositionX(), getBallPositionY());
-	PORTE = (getBallPositionY()); // Lyser fint
-
-	display_image(0, icon);
-	clearIcon();
-}
-
 void init(void) // This is all stolen.
 {
+	displayState = 0;
+	btnTimeoutCounter = 0;
+	aiDiff = 0;
+	ai = false;
+
 	SYSKEY = 0xAA996655; /* Unlock OSCCON, step 1 */
 	SYSKEY = 0x556699AA; /* Unlock OSCCON, step 2 */
 	while (OSCCON & (1 << 21))

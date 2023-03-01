@@ -4,7 +4,6 @@
 #include "header.h"
 #include <math.h>
 
-
 bool serveDelay = true;
 bool isPlaying = false;
 
@@ -16,34 +15,36 @@ double ballSize = 4;
 double ballX;
 double ballY;
 
-double ballSpeedY = 0.2;
-double ballSpeedX = 0.25;
 double player1Y;
 double player2Y;
 
 double playerHeight;
 
-bool getServeDelay(){
+int player1Score;
+int player2Score;
+
+bool getServeDelay()
+{
   return serveDelay;
 }
 
-void setServeDelay(bool b){
+void setServeDelay(bool b)
+{
   serveDelay = b;
 }
-
 
 int getBallSize()
 {
   return ballSize;
 }
 
-
-
 void initGame() // Will most likely be used to reset game
 {
   playerHeight = 12;
   player1Y = 15;
   isPlaying = false;
+  ballSpeedY = 0.2;
+  ballSpeedX = 0.25;
 
   gameWidth = 128; // Screen width
   gameHeight = 32; // Screen height
@@ -86,6 +87,7 @@ void updatePlayerPos(double offset, int playerNumber)
 void startGame()
 {
   isPlaying = true;
+  calculateBallImpact();
 }
 
 void tickGame()
@@ -138,13 +140,13 @@ int ballBounce()
 
   if (ballX < 0)
   {
+    player1Score++;
     onGoal(1);
-    // scorePlayerOne++;
   }
   if ((ballX + ballSize) > gameWidth - 1)
   {
+    player2Score++;
     onGoal(2);
-    // scorePlayerTwo++;
   }
 }
 
@@ -165,6 +167,8 @@ int getPlayerPosition(int playerNumber)
 
 void onGoal(int playerNumber)
 {
+  calculateBallImpact();
+
   serveDelay = true;
   isPlaying = false;
   ballX = gameWidth / 2;  // Make ball start in middle
@@ -172,6 +176,42 @@ void onGoal(int playerNumber)
 
   ballSpeedY = 0.2;
   ballSpeedX = 0.25; // Give ball it's beginning direction and speed
+
+  char word[16];
+
+  int k;
+  for (k = 0; k < 16; k++)
+  {
+    word[k] = ' ';
+  }
+
+  int exp = getBase10Expo(player2Score);
+  char buffer[exp + 1];
+  char *chars = itoa(player2Score, buffer, 10);
+
+  int i;
+
+  for (i = 0; i < exp + 1; i++)
+  {
+    word[6 - i] = chars[i];
+  }
+
+  // word[6] = chars[1];
+  word[8] = ':';
+
+  int exp2 = getBase10Expo(player1Score);
+  char buffer2[exp2 + 1];
+  char *chars2 = itoa(player1Score, buffer, 10);
+  int j;
+
+  for (j = 0; j < exp2 + 1; j++)
+  {
+    word[10 + exp2 - j] = chars[j];
+  }
+
+  display_string(0, word);
+  display_update();
+  display_image(0, goal, 128, 1, 3);
 }
 
 void paddleCollide()
@@ -180,11 +220,16 @@ void paddleCollide()
   {
     ballSpeedX = fabs(ballSpeedX);
     collisionDeflection(player1Y);
+    
+    if (ai)
+    {
+      calculateBallImpact();
+    }
   }
   else if (player2Y <= (ballY + ballSize) && ballY <= (player2Y + 8) && ((ballX + ballSize) >= 123))
   {
     ballSpeedX = -1 * fabs(ballSpeedX);
-    collisionDeflection(player2Y);
+   collisionDeflection(player2Y);
   }
 }
 

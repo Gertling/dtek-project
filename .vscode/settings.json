@@ -3,6 +3,7 @@
   "files.associations": {
     "stdint.h": "c",
     "stdbool.h": "c",
-    "math.h": "c"
+    "math.h": "c",
+    "menumanager": "c"
   }
 }
