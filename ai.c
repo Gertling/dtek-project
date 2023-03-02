@@ -6,27 +6,61 @@
 #include <math.h>
 
 int targetY;
-
+int delayCounter = 0;
+int delayTarget = 0;
 void aiHandler()
 {
-
-    if ((getPlayerPosition(2)) + (playerHeight / 2) < targetY)
+    if (delayCounter >= delayTarget)
     {
-        updatePlayerPos(0.2, 2);
-    }
-    else if (getPlayerPosition(2) + (playerHeight / 2) > targetY)
-    {
-        updatePlayerPos(-0.2, 2);
+        if ((getPlayerPosition(2)) + (playerHeight / 2) < targetY)
+        {
+            updatePlayerPos(0.2, 2);
+        }
+        else if (getPlayerPosition(2) + (playerHeight / 2) > targetY)
+        {
+            updatePlayerPos(-0.2, 2);
+        }
+    } else {
+        delayCounter++;
     }
 }
 
 void calculateBallImpact()
 {
+    delayTarget = delayByDifficulty();
+    delayCounter = 0;
+    int gameHeight = 32;
+    double cloneBallX = getBallPositionX();
+    double cloneBallY = getBallPositionY();
+    double cloneBallSpeedX = ballSpeedX;
+    double cloneBallSpeedY = ballSpeedY;
+    double cloneBallSize = getBallSize();
+
+    while (cloneBallX + cloneBallSize < 123)
+    {
+        cloneBallY += cloneBallSpeedY;
+        cloneBallX += cloneBallSpeedX;
+
+        if ((cloneBallY + cloneBallSize) > gameHeight - 1)
+        {
+            cloneBallSpeedY = -1 * fabs(cloneBallSpeedY);
+        }
+        if (cloneBallY < 0)
+        {
+            cloneBallSpeedY = fabs(cloneBallSpeedY);
+        }
+    }
+    targetY = cloneBallY;
+}
+
+/*
+void calculateBallImpact()
+{
     double t = (123 - getBallPositionX() - getBallSize()) / ballSpeedX;
 
     double dist = ballSpeedY > 0 ? (28 - getBallPositionY()) : getBallPositionY();
-    
-    
+
+
 
     double dBY = fabs(ballSpeedY) * t;
 
@@ -61,3 +95,4 @@ void calculateBallImpact()
         PORTE |= 64;
     }
 }
+*/

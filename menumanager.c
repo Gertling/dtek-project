@@ -5,8 +5,6 @@
 #include <math.h>
 #include <pic32mx.h>
 
-
-
 int count = 0;
 
 void mainMenu()
@@ -119,16 +117,19 @@ void difficulty()
         {
             aiDiff = 2;
             btnTimeoutCounter = 0;
+            displayState = 0;
         }
         if (getbtns() & 0x2)
         {
             aiDiff = 1;
             btnTimeoutCounter = 0;
+            displayState = 0;
         }
         if (getbtns() & 0x4)
         {
             aiDiff = 0;
             btnTimeoutCounter = 0;
+            displayState = 0;
         }
     }
 }
@@ -172,12 +173,20 @@ void game()
 
     tickGame();
 
-    if (count >= 5) // So that we only display the game every 10 ticks.
+    if (count >= 5) // So that we only display the game every 5 ticks.
     {
         count = 0;
         displayGame();
     }
     count++;
+    if (btnTimeoutCounter > 100)
+    {
+        if (getbtns())
+        {
+            displayState = 0;
+            btnTimeoutCounter = 0;
+        }
+    }
 }
 
 void displayGame()
@@ -189,7 +198,7 @@ void displayGame()
         displayPlayer(2, getPlayerPosition(2));
 
         displayBall(getBallPositionX(), getBallPositionY());
-        //PORTE = (getBallPositionY()); // Lyser fint
+        // PORTE = (getBallPositionY()); // Lyser fint
         display_image(0, icon, 128, 0, 3);
 
         clearIcon();

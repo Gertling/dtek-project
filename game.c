@@ -44,7 +44,7 @@ void initGame() // Will most likely be used to reset game
   player1Y = 15;
   isPlaying = false;
   ballSpeedY = 0.2;
-  ballSpeedX = 0.25;
+  ballSpeedX = ballSpeedModifierX(0.15);
 
   gameWidth = 128; // Screen width
   gameHeight = 32; // Screen height
@@ -87,7 +87,10 @@ void updatePlayerPos(double offset, int playerNumber)
 void startGame()
 {
   isPlaying = true;
-  calculateBallImpact();
+  if (ballSpeedX > 0)
+  {
+    calculateBallImpact();
+  }
 }
 
 void tickGame()
@@ -167,7 +170,6 @@ int getPlayerPosition(int playerNumber)
 
 void onGoal(int playerNumber)
 {
-  calculateBallImpact();
 
   serveDelay = true;
   isPlaying = false;
@@ -175,7 +177,15 @@ void onGoal(int playerNumber)
   ballY = gameHeight / 2; // Make ball start in middle
 
   ballSpeedY = 0.2;
-  ballSpeedX = 0.25; // Give ball it's beginning direction and speed
+  ballSpeedX = ballSpeedModifierX(0.15); // Give ball it's beginning direction and speed
+
+  if (ballSpeedX > 0)
+  {
+    if (ballSpeedX > 0)
+    {
+      calculateBallImpact();
+    }
+  }
 
   char word[16];
 
@@ -220,16 +230,19 @@ void paddleCollide()
   {
     ballSpeedX = fabs(ballSpeedX);
     collisionDeflection(player1Y);
-    
+
     if (ai)
     {
-      calculateBallImpact();
+      if (ballSpeedX > 0)
+      {
+        calculateBallImpact();
+      }
     }
   }
   else if (player2Y <= (ballY + ballSize) && ballY <= (player2Y + 8) && ((ballX + ballSize) >= 123))
   {
     ballSpeedX = -1 * fabs(ballSpeedX);
-   collisionDeflection(player2Y);
+    collisionDeflection(player2Y);
   }
 }
 

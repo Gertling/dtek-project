@@ -3,6 +3,8 @@ void updateBtns();
 
 char aiDiff;
 bool ai;
+int delayByDifficulty();
+double ballSpeedModifierX(double ballSpeed);
 
 
 void calculateBallImpact();

@@ -17,7 +17,7 @@ void timer2(void)
 
     enable_interrupt(); // enable_interrupt from labwork.S
 
-    PR2 = 2500;      // 625;     // Sätter delayen korrekt (3125 * 256 = 800 000) Räknar med pre-scale
+    PR2 = 625;      // 625;     // Sätter delayen korrekt (3125 * 256 = 800 000) Räknar med pre-scale
     T2CON |= 0x8000; // Starts the timer
 }
 
