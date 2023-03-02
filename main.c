@@ -97,7 +97,7 @@ void replaceString(char *string1, char *string2, int length)
 	}
 }
 
-void init(void) // This is all stolen.
+void init(void) // This is mostly stolen
 {
 	displayState = 0;
 	btnTimeoutCounter = 0;

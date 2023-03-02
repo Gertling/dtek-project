@@ -21,7 +21,7 @@ int delayByDifficulty()
     }
 }
 
-int myRandom()
+int myRandom() // stolen
 {
 
     // Use the current time as a seed for the random number generator

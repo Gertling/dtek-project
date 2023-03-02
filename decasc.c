@@ -23,7 +23,7 @@ void swap(int x, int y)
     y = temp;
 }
 
-void reverse(char str[], int length)
+void reverse(char str[], int length) // stolen
 {
     int start = 0;
     int end = length - 1;
@@ -35,7 +35,7 @@ void reverse(char str[], int length)
     }
 }
 
-char *itoa(int num, char *str, int base)
+char *itoa(int num, char *str, int base) // Stolen
 {
     int i = 0;
 

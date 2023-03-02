@@ -9,6 +9,8 @@
 #include "header.h"  /* Declatations for these labs */
 
 /* Declare a helper function which is local to this file */
+
+// Stolen
 static void num32asc(char *s, int);
 
 #define DISPLAY_CHANGE_TO_COMMAND_MODE (PORTFCLR = 0x10)

@@ -3,6 +3,8 @@
   # Modified 2015 by F Lundevall
   # For copyright and licensing, see file COPYING
 
+  #Stolen
+
 .macro movi reg, val
 	lui \reg, %hi(\val)
 	ori \reg, \reg, %lo(\val)

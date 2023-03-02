@@ -5,6 +5,8 @@
  * For copyright and licensing, see file COPYING */
 
 /* Non-Maskable Interrupt; something bad likely happened, so hang */
+
+// Stolen
 void _nmi_handler() {
 	for(;;);
 }
