@@ -1,0 +1,32 @@
+Date : 2023-03-02 07:16:48
+Directory : /Users/gertling/Desktop/Datorteknik/dtek-mini-project
+Total : 7 files,  293 codes, 47 comments, 46 blanks, all 386 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C        |          6 |        278 |         47 |         38 |        363 |
+| C++      |          1 |         15 |          0 |          8 |         23 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                   |          7 |        293 |         47 |         46 |        386 |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                            | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/ai.c          | C        |         41 |         43 |          2 |         86 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/difficulty.c  | C        |         43 |          2 |          6 |         51 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/game.c        | C        |         16 |          0 |          4 |         20 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/header.h      | C++      |         15 |          0 |          8 |         23 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/leaderboard.c | C        |          0 |          0 |          1 |          1 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/main.c        | C        |         17 |          0 |          1 |         18 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/menumanager.c | C        |        161 |          2 |         24 |        187 |
+| Total                                                               |          |        293 |         47 |         46 |        386 |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+

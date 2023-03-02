@@ -19,7 +19,6 @@ bool isTicked = false;
 
 int mytime = 1;
 
-
 int main(void)
 {
 
@@ -60,21 +59,22 @@ int main(void)
 			switch (displayState)
 			{
 			case 0:
-					mainMenu();
+				mainMenu();
 				break;
 			case 1:
-					leaderBoard();
+				leaderBoard();
 				break;
 			case 2:
-					difficulty();
+				difficulty();
 				break;
 			case 3:
-					game();
+				game();
 				break;
 			case 4:
-					gameMode();
+				gameMode();
 				break;
-
+			case 5:
+				enterScore();
 			default:
 				break;
 			}
@@ -88,12 +88,29 @@ int main(void)
 	return 0;
 }
 
+void replaceString(char *string1, char *string2, int length)
+{
+	int i;
+	for (i = 0; i < length; i++)
+	{
+		string1[i] = string2[i];
+	}
+}
+
 void init(void) // This is all stolen.
 {
 	displayState = 0;
 	btnTimeoutCounter = 0;
 	aiDiff = 0;
 	ai = false;
+	replaceString(name1, "AAA", 3);
+	replaceString(name2, "AAB", 3);
+	replaceString(name3, "AAC", 3);
+
+
+	highscore1 = 0;
+	highscore2 = 0;
+	highscore3 = 0;
 
 	SYSKEY = 0xAA996655; /* Unlock OSCCON, step 1 */
 	SYSKEY = 0x556699AA; /* Unlock OSCCON, step 2 */

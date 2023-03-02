@@ -1,0 +1,9 @@
+"filename", "language", "C", "C++", "comment", "blank", "total"
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/ai.c", "C", 41, 0, 43, 2, 86
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/difficulty.c", "C", 43, 0, 2, 6, 51
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/game.c", "C", 16, 0, 0, 4, 20
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/header.h", "C++", 0, 15, 0, 8, 23
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/leaderboard.c", "C", 0, 0, 0, 1, 1
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/main.c", "C", 17, 0, 0, 1, 18
+"/Users/gertling/Desktop/Datorteknik/dtek-mini-project/menumanager.c", "C", 161, 0, 2, 24, 187
+"Total", "-", 278, 15, 47, 46, 386

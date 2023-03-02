@@ -83,8 +83,24 @@ void startGame();
 void tickGame();
 
 
-
+void replaceString(char *string1, char *string2, int length);
 
 char* itoa(int num, char* str, int base);
 void reverse(char str[], int length);
 int getBase10Expo(int num);
+
+void swap(int x, int y);
+
+
+int player1Score;
+int player2Score;
+
+char currentName[3];
+
+int highscore1;
+int highscore2;
+int highscore3;
+
+char name1[3];
+char name2[3];
+char name3[3];

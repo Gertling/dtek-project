@@ -50,7 +50,7 @@ void calculateBallImpact()
             cloneBallSpeedY = fabs(cloneBallSpeedY);
         }
     }
-    targetY = cloneBallY;
+    targetY = cloneBallY + (getBallSize() / 2);
 }
 
 /*

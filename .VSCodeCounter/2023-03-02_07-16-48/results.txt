@@ -1,0 +1,42 @@
+Date : 2023-03-02 07:16:48
+Directory : /Users/gertling/Desktop/Datorteknik/dtek-mini-project
+Total : 16 files,  1500 codes, 241 comments, 282 blanks, all 2023 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C        |         14 |      1,376 |        223 |        232 |      1,831 |
+| C++      |          1 |         72 |          5 |         29 |        106 |
+| Makefile |          1 |         52 |         13 |         21 |         86 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                   |         16 |      1,500 |        241 |        282 |      2,023 |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                            | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/Makefile      | Makefile |         52 |         13 |         21 |         86 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/ai.c          | C        |         50 |         43 |          5 |         98 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/decasc.c      | C        |         51 |          6 |         10 |         67 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/difficulty.c  | C        |         43 |          2 |          6 |         51 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/display.c     | C        |         33 |          0 |         16 |         49 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/displaygame.c | C        |         41 |          0 |          4 |         45 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/game.c        | C        |        233 |          4 |         42 |        279 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/header.h      | C++      |         72 |          5 |         29 |        106 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/io.c          | C        |         47 |          1 |         15 |         63 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/leaderboard.c | C        |          0 |          0 |          1 |          1 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/main.c        | C        |         98 |         41 |         22 |        161 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/menumanager.c | C        |        333 |          7 |         44 |        384 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/mipslabdata.c | C        |        194 |          7 |          6 |        207 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/mipslabfunc.c | C        |        211 |         98 |         45 |        354 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/stubs.c       | C        |          7 |          8 |          6 |         21 |
+| /Users/gertling/Desktop/Datorteknik/dtek-mini-project/timer.c       | C        |         35 |          6 |         10 |         51 |
+| Total                                                               |          |      1,500 |        241 |        282 |      2,023 |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+

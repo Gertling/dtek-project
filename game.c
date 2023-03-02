@@ -20,9 +20,6 @@ double player2Y;
 
 double playerHeight;
 
-int player1Score;
-int player2Score;
-
 bool getServeDelay()
 {
   return serveDelay;
@@ -143,12 +140,12 @@ int ballBounce()
 
   if (ballX < 0)
   {
-    player1Score++;
+    player2Score++;
     onGoal(1);
   }
   if ((ballX + ballSize) > gameWidth - 1)
   {
-    player2Score++;
+    player1Score++;
     onGoal(2);
   }
 }
@@ -195,9 +192,9 @@ void onGoal(int playerNumber)
     word[k] = ' ';
   }
 
-  int exp = getBase10Expo(player2Score);
+  int exp = getBase10Expo(player1Score);
   char buffer[exp + 1];
-  char *chars = itoa(player2Score, buffer, 10);
+  char *chars = itoa(player1Score, buffer, 10);
 
   int i;
 
@@ -209,9 +206,9 @@ void onGoal(int playerNumber)
   // word[6] = chars[1];
   word[8] = ':';
 
-  int exp2 = getBase10Expo(player1Score);
+  int exp2 = getBase10Expo(player2Score);
   char buffer2[exp2 + 1];
-  char *chars2 = itoa(player1Score, buffer, 10);
+  char *chars2 = itoa(player2Score, buffer, 10);
   int j;
 
   for (j = 0; j < exp2 + 1; j++)
@@ -230,6 +227,8 @@ void paddleCollide()
   {
     ballSpeedX = fabs(ballSpeedX);
     collisionDeflection(player1Y);
+    ballX = 4;
+    ballSpeedX += ballSpeedModifierX(0.02);
 
     if (ai)
     {
@@ -241,8 +240,11 @@ void paddleCollide()
   }
   else if (player2Y <= (ballY + ballSize) && ballY <= (player2Y + 8) && ((ballX + ballSize) >= 123))
   {
+
     ballSpeedX = -1 * fabs(ballSpeedX);
+    ballSpeedX -= ballSpeedModifierX(0.02);
     collisionDeflection(player2Y);
+    ballX = 123 - ballSize;
   }
 }
 

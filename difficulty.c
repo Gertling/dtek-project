@@ -9,11 +9,11 @@ int delayByDifficulty()
 {
     if (aiDiff == 0)
     {
-        return (100 * myRandom());
+        return (200 * myRandom());
     }
     else if (aiDiff == 1)
     {
-        return (50 * myRandom());
+        return (120 * myRandom());
     }
     else
     {
@@ -42,7 +42,7 @@ double ballSpeedModifierX(double ballSpeed)
     }
     else if (aiDiff == 1)
     {
-        return ballSpeed;
+        return ballSpeed * 0.8;
     }
     else
     {
